@@ -1,15 +1,27 @@
-import React, { Fragment } from 'react'
+import React, { useState } from 'react'
 import './Authentication.css'
 import { Link } from 'react-router-dom'
 
 const AuthenticationForm = () => {
+  const [isV1,SetIsV1]=useState(false)
   return (
-    <div className="section-right max-w-md w-[100%] pl-8 mt-8 bg-gray-100 rounded-md">
+    <div className="section-right max-w-md w-[100%] mt-8 bg-gray-100 rounded-md md:w-[100%] md:pr-8 md:pl-8">
       <h2>Welcome to <span class="text-global">My Revision+</span> </h2>
       <div class="tab">
-        <button class="tablinks active" id="defaultOpen"> Login My Revision V2</button>
-        <button class="tablinks" > Login My Revision V1</button>
+        <button class={`tablinks ${!isV1 ? '!bg-[#002b4f] !text-white' : ''}`} id="defaultOpen"  onClick={()=>SetIsV1(false)}> Login My Revision V2</button>
+        <button class={`tablinks ${isV1 ? '!bg-[#002b4f] !text-white' : ''}`} onClick={()=>SetIsV1(true)}> Login My Revision V1</button>
       </div>
+      {isV1 && <div className='flex items-center justify-between mt-4'>
+        {/* Radio button for select v1 or v2 */}
+        <div class="flex items-center me-4">
+        <input checked id="purple-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600" />
+        <label for="purple-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Student Login</label>
+    </div>
+    <div class="flex items-center me-4">
+        <input id="purple-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800  dark:bg-gray-700 dark:border-gray-600" />
+        <label for="purple-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Teacher Login</label>
+    </div>
+      </div>}
       <form>
         <div className="mb-4 mt-4">
           <div class="relative">
@@ -39,125 +51,4 @@ const AuthenticationForm = () => {
 }
 
 export default AuthenticationForm
-    // <Fragment>
-    //     <div class="section-right">
-
-    //         <h2>Welcome to <span class="text-global">IB Global</span> <span class="text-academy">Academy</span></h2>
-
-
-    //         <div class="tab">
-    //             <button class="tablinks active" id="defaultOpen"> Login My Revision V2</button>
-    //             <button class="tablinks" > Login My Revision V1</button>
-    //         </div>
-    //         <form class="auth-login-form mt-2" >
-    //             <input type="hidden" /><div id="ib-mk" class="tabcontent" >
-    //                 <div class="login-box">
-    //                     <div class="touch-form">
-    //                         <label>
-    //                             <input id="email" type="email" name="email" placeholder="john@example.com" aria-describedby="login-email" autofocus="" tabindex="1" />
-    //                             <span>Email</span>
-    //                         </label>
-    //                     </div>
-
-    //                     <div class="touch-form1">
-    //                         <label>
-    //                             <input id="password" type="password" name="password" placeholder="············" aria-describedby="login-password" tabindex="2" required="" autocomplete="current-password" />
-    //                             <span>Password</span>
-    //                         </label>
-    //                     </div>
-    //                     <div class="touch-form2">
-    //                         <a href="https://ibgakiosk.com/v2/forgot-password" class="forgot-password">Forgot Password?</a>
-    //                     </div>
-    //                     <div class="touch-form2">
-    //                         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-    //                         <label class="remember" for="vehicle1"> Remember me</label>
-    //                     </div>
-
-    //                     <div class="touch-form2">
-    //                         <button class="btn btn-primary w-100 submit-now" tabindex="4">Continue</button>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </form>
-
-    //         <div id="ib-mk1" class="tabcontent" style={{ display: 'none' }}>
-
-    //             <div class="ib-box">
-
-    //                 <div class="ib-login">
-    //                     <label>
-    //                         <input type="radio" value="stu" name="anything" class="radioCls" id="yes" checked="" />Student Login
-    //                     </label>
-    //                 </div>
-    //                 <div class="ib-login">
-    //                     <label>
-    //                         <input type="radio" value="teach" name="anything" class="radioCls" id="no" />Teacher Login
-    //                     </label>
-    //                 </div>
-
-    //             </div>
-
-    //             <form class="form-horizontal m-t-30" action="../stu_login.php" method="post">
-    //                 <div class="someData activeTab" id="first">
-    //                     <div class="login-box">
-    //                         <input type="radio" style={{ display: 'none' }} name="loginFlag" value="Student" checked="" />
-    //                         <div class="touch-form">
-    //                             <label>
-    //                                 <input type="email" class="form-control custom" name="username" autocomplete="off" placeholder="Enter username" required="" />
-    //                                 <span>Email</span>
-    //                             </label>
-    //                         </div>
-
-    //                         <div class="touch-form1">
-    //                             <label>
-    //                                 <input type="password" class="form-control custom" name="password" autocomplete="off" placeholder="Enter password" required="" />
-    //                                 <span>Password</span>
-    //                             </label>
-    //                         </div>
-
-    //                         <div class="touch-form2">
-    //                             <a href="../std-forget-password.php" class="forgot-password">Forgot Password?</a>
-    //                         </div>
-
-    //                         <div class="touch-form2">
-    //                             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-    //                             <label class="remember" for="vehicle1"> Remember me</label>
-    //                         </div>
-    //                         <div class="touch-form2">
-    //                             <button type="submit" name="login" class="submit-now">Continue</button>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </form>
-
-    //             <form class="form-horizontal m-t-30" action="../teacher_login.php" method="post">
-    //                 <div class="someData" id="second">
-    //                     <p></p>
-    //                     <div class="login-box">
-    //                         <div class="touch-form">
-    //                             <label>
-    //                                 <input type="email" placeholder="Email" name="username" autocomplete="off" required="" />
-    //                                 <span>Email</span>
-    //                             </label>
-    //                         </div>
-    //                         <div class="touch-form1">
-    //                             <label>
-    //                                 <input type="password" placeholder="Password" name="password" autocomplete="off" required="" />
-    //                                 <span>Password</span>
-    //                             </label>
-    //                         </div>
-    //                         <div class="touch-form2">
-    //                             <a href="#" class="forgot-password">Forgot Password?</a>
-    //                         </div>
-    //                         <div class="touch-form2">
-    //                             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-    //                             <label class="remember" for="vehicle1"> Remember me</label>
-    //                         </div>
-    //                         <div class="touch-form2">
-    //                             <button type="submit" name="login" class="submit-now">Continue</button>
-    //                         </div>
-    //                     </div></div>
-    //             </form>
-    //         </div>
-    //     </div>
-    // </Fragment>
+  

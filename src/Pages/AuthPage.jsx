@@ -7,7 +7,7 @@ const AuthPage = () => {
     return (
         <Fragment>
             <NavBar />
-            <div className='flex'>
+            <div className='flex flex-col md:flex-row items-center justify-center md:mx-auto'>
                 <AuthenticationImage />
                 <AuthenticationForm />
             </div>
