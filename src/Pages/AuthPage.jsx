@@ -8,7 +8,9 @@ const AuthPage = () => {
         <Fragment>
             <NavBar />
             <div className='flex flex-col md:flex-row items-center justify-center md:mx-auto'>
+                <div className='hidden md:block'>
                 <AuthenticationImage />
+                </div>
                 <AuthenticationForm />
             </div>
         </Fragment>
