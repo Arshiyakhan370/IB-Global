@@ -1,5 +1,7 @@
 body {
   font-family: 'Balsamiq Sans', sans-serif;
+  color: #65607a;
+  overflow-x: hidden;
 }
 
 .App {
